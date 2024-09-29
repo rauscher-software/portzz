@@ -9,7 +9,7 @@ cartdata(
 )
 
 gom='' --game over message
-theme='78' --theme
+theme=78 --theme
 
 --score + highscore
 scr=0
@@ -26,7 +26,7 @@ end
 function _update()
 	update()
 	menuitem(
-		1, "theme: '" .. theme, 
+		1, "theme: '"..tostr(theme), 
 		menu_theme
 	)
 end
@@ -55,7 +55,7 @@ function intro_draw()
 end
 
 function set_theme_col()
-	return theme=='78' and 3 or 11
+	return theme==78 and 3 or 11
 end
 
 -- godsp1t intro
@@ -195,7 +195,7 @@ end
 
 function start_draw()
 	cls()
-	if theme=="78" then
+	if theme==78 then
 		?tit1,0,0
 	else
 		?tit2,0,0
@@ -264,7 +264,7 @@ end
 
 function update_theme()
 	--theme
-	if theme=='82' then
+	if theme==82 then
 		p={1,13,9,12,10,2,3,14}
 	else
 		p={0,5,5,12,10,2,3,2}
@@ -425,7 +425,7 @@ function game_draw()
 	rect(0,0,127,127,c.l)
 	--tower
 	if (#hs>0) pal(1,12)
-	if theme=='78' then
+	if theme==78 then
 		pal(13,5)
 		pal(6,5)
 	end 
@@ -475,7 +475,7 @@ function game_draw()
 	)
 	--nuke count
 	for i=0,nks-1 do
-		if theme=='78' then
+		if theme==78 then
 			pal(14,2)
 			pal(6,5)
 		end
@@ -488,7 +488,7 @@ function game_draw()
 			--propulsion
 			pal(c.p,flr(rnd(15)))
 			--cockpit
-			if theme=='78' then
+			if theme==78 then
 				pal(12,0)
 				pal(5,0)
 			end
@@ -576,12 +576,12 @@ tit2="⁶-b⁶x8⁶y8²e ²eᶜ2⁶.\0\0\0\0\0\0ᶜ、⁸⁶-#ᶜ5⁶.\0\0\0\0\0
 function menu_theme(b)
 	if b&1>0 then
 		menuitem(_,"theme: '78")
-		theme='78'
+		theme=78
 		update_theme()
 	end
 	if b&2> 0 then
 		menuitem(_,"theme: '82")
-		theme='82'
+		theme=82
 		update_theme()
 	end
 	return true

@@ -9,7 +9,6 @@ cartdata(
 )
 
 gom='' --game over message
-theme=78 --theme
 
 --score + highscore
 scr=0
@@ -18,6 +17,13 @@ if hscr==nil then
 	hscr=0
 end
 new_hscr=false
+
+--theme
+theme=dget(2)
+if theme~=78 and
+   theme~=82 then
+   theme =78
+end
 
 function _init()
 	intro_init()
@@ -260,26 +266,6 @@ function game_init()
 	mov=0  --moves
 	lvl=1  --level
 	mpl=25 --moves per level
-end
-
-function update_theme()
-	--theme
-	if theme==82 then
-		p={1,13,9,12,10,2,3,14}
-	else
-		p={0,5,5,12,10,2,3,2}
-	end
-	--colors
-	c={
-		b=p[1], --background
-		l=p[2], --line
-		t=p[3], --text
-		s=p[4], --shoot
-		p=p[5], --propulsion
-		e=p[6], --enemy
-		f=p[7], --friend
-		n=p[8], --nuke
-	}
 end
 
 --------------------
@@ -585,6 +571,29 @@ function menu_theme(b)
 		update_theme()
 	end
 	return true
+end
+
+--update theme
+function update_theme()
+	--theme
+	if theme==82 then
+		p={1,13,9,12,10,2,3,14}
+	else
+		p={0,5,5,12,10,2,3,2}
+	end
+	--colors
+	c={
+		b=p[1], --background
+		l=p[2], --line
+		t=p[3], --text
+		s=p[4], --shoot
+		p=p[5], --propulsion
+		e=p[6], --enemy
+		f=p[7], --friend
+		n=p[8], --nuke
+	}
+	--save theme
+	dset(2,theme)
 end
 -->8
 --todo
